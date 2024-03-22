@@ -1,0 +1,41 @@
+SYSTEM:
+  MODE: train
+
+DATASET:
+  NAME: "bigearthnet"
+
+FUSION:
+  ENABLED: True
+  MODALITIES: ["RGB", "S2"]
+  FREEZE_BACKBONES: True
+  FUSE_AT_FOUR: False
+  FREEZE_TO : False
+  LOAD_MODELS: True
+  RGB_MODEL: "vit"
+  S2_MODEL: "vit"
+  RGB_WEIGHTS: "logs_new/RGB_PRETRAIN/2023-06_12_19-55-53s/checkpoints"
+  S2_WEIGHTS: "pretrained_all/s2_pretrain/checkpoints"
+  DROPOUT: 
+    ENABLED: False
+    RATE: 0.2
+
+MODEL:
+  NAME: ResNet50
+  LABEL_TYPE: BigEarthNet-19
+  MODALITY: MM
+  PRETRAINED: false
+  FINE_TUNE: false
+
+TRAIN:
+  EPOCHS: 10
+  BS: 128
+  LR: 0.001
+  LR_STEP: [1,]
+  LR_DECAY: 0.1
+  SHUFFLE_BUFFER_SIZE: 130000
+  LABEL_SMOOTHING: 0.0
+  BACKWARD_PASSES_PER_STEP: 4
+
+VALIDATION:
+  VALIDATION_INTERVAL: 1
+  SAVE_AFTER_VALIDATION: True

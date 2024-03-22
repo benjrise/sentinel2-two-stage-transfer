@@ -1,0 +1,38 @@
+DATASET:
+  NAME: eurosat
+FUSION:
+  DROPOUT:
+    ENABLED: false
+    RATE: 0.2
+  ENABLED: true
+  END_TO_END: true
+  FREEZE_BACKBONES: true
+  FREEZE_TO: false
+  FUSE_AT_FOUR: false
+  LOAD_MODELS: true
+  MODALITIES:
+  - RGB
+  - S2
+  RGB_WEIGHTS: imagenet
+  S1_WEIGHTS_PATH: logs/S1/2023-04_20_15-38-27s/checkpoints
+  S2_WEIGHTS: ''
+MODEL:
+  FINE_TUNE: false
+  LABEL_TYPE: BigEarthNet-19
+  MODALITY: S2
+  NAME: resnet50
+  PRETRAINED: false
+SYSTEM:
+  MODE: train
+TRAIN:
+  BACKWARD_PASSES_PER_STEP: 4
+  BS: 128
+  EPOCHS: 30
+  LABEL_SMOOTHING: 0.0
+  LR: 0.001
+  LR_DECAY: 0.1
+  LR_STEP:
+  - 27
+VALIDATION:
+  SAVE_AFTER_VALIDATION: true
+  VALIDATION_INTERVAL: 1

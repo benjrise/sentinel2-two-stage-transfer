@@ -1,0 +1,26 @@
+DATASET:
+  NAME: eurosat
+  PERCENTAGE: 1.0
+MODEL:
+  DROPOUT_RATE: 0.2
+  FINE_TUNE: false
+  LABEL_TYPE: BigEarthNet-19
+  MODALITY: S2
+  NAME: resnet50
+  PRETRAINED: false
+  WEIGHTS: runs/bigearthnet/runs_bigearthnet_resnet50/S2_none_resnet50/checkpoints/best_model.pth
+SYSTEM:
+  MODE: train
+TRAIN:
+  BACKWARD_PASSES_PER_STEP: 4
+  BS: 128
+  EPOCHS: 30
+  LABEL_SMOOTHING: 0.0
+  LR: 0.001
+  LR_DECAY: 0.1
+  LR_STEP:
+  - 27
+  SHUFFLE_BUFFER_SIZE: 130000
+VALIDATION:
+  SAVE_AFTER_VALIDATION: true
+  VALIDATION_INTERVAL: 1
