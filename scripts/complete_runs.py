@@ -480,20 +480,20 @@ if __name__ == "__main__":
             "architectures": ARCHS,
             "hyperparameters": repeat_hypers,
         },
-        "S2_PRETRAIN_BIGEARTH_EUROSAT": {
-            "modality": "S2",
-            "weights": "bigearth",
-            "datasets": ["eurosat"],
-            "architectures": ARCHS,
-            "hyperparameters": hypers,
-        },
-        "S2_PRETRAIN_MOCO": {
-            "modality": "S2",
-            "weights": "moco",
-            "datasets": DATASETS,
-            "architectures": ["resnet50", "vit"],
-            "hyperparameters": hypers,
-        },
+        # "S2_PRETRAIN_BIGEARTH_EUROSAT": {
+        #     "modality": "S2",
+        #     "weights": "bigearth",
+        #     "datasets": ["eurosat"],
+        #     "architectures": ARCHS,
+        #     "hyperparameters": hypers,
+        # },
+        # "S2_PRETRAIN_MOCO": {
+        #     "modality": "S2",
+        #     "weights": "moco",
+        #     "datasets": DATASETS,
+        #     "architectures": ["resnet50", "vit"],
+        #     "hyperparameters": hypers,
+        # },
     }
 
     linear_hypers = copy.deepcopy(hypers)

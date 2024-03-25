@@ -158,7 +158,7 @@ def update_yaml(args, input_yaml):
         config["MODEL"]["RANDOM_INIT_FIRST_LAYER"] = False
     if args.random_init_first_layer:
         config["MODEL"]["RANDOM_INIT_FIRST_LAYER"] = True
-        
+
     if args.model:
         config["MODEL"]["NAME"] = args.model
     if args.split:
@@ -185,19 +185,6 @@ def update_yaml(args, input_yaml):
 
     if args.pretrained:
         config["MODEL"]["PRETRAINED"] = True
-
-    if args.undersample:
-        if "UNDERSAMPLE" not in config["TRAIN"]:
-            config["TRAIN"]["UNDERSAMPLE"] = {}
-        config["TRAIN"]["UNDERSAMPLE"]["ENABLED"] = args.undersample
-        if args.custom_weights:
-            config["TRAIN"]["UNDERSAMPLE"]["CUSTOM_WEIGHTS"] = True
-
-        if args.beta:
-            config["TRAIN"]["UNDERSAMPLE"]["BETA"] = args.beta
-
-        if args.alpha:
-            config["TRAIN"]["UNDERSAMPLE"]["ALPHA"] = args.alpha
 
     if args.lr:
         config["TRAIN"]["LR"] = args.lr
@@ -243,44 +230,11 @@ def update_yaml(args, input_yaml):
         else:
             config["FUSION"]["FUSE_AT_FOUR"] = False
 
-    if args.blocks:
-        config["MODEL"]["FPN"]["BLOCKS"] = args.blocks
     if args.eval_period:
         config["VALIDATION"]["VALIDATION_INTERVAL"] = args.eval_period
-    if args.cosine:
-        config["TRAIN"]["COSINE"] = True
     if args.eval_interval:
         config["VALIDATION"]["VALIDATION_INTERVAL"] = args.eval_interval
 
-    if args.lr_scheduler:
-        if "LEARNING_RATE_SCHEDULER" not in config:
-            config["LEARNING_RATE_SCHEDULER"] = {}
-        config["LEARNING_RATE_SCHEDULER"]["ENABLED"] = True
-        if "SLANTED_TRIANGULAR" not in config["LEARNING_RATE_SCHEDULER"]:
-            config["LEARNING_RATE_SCHEDULER"]["SLANTED_TRIANGULAR"] = {}
-        if args.max_lr:
-            config["LEARNING_RATE_SCHEDULER"]["SLANTED_TRIANGULAR"][
-                "MAX_LR"
-            ] = args.max_lr
-        if args.cut_frac:
-            config["LEARNING_RATE_SCHEDULER"]["SLANTED_TRIANGULAR"][
-                "CUT_FRAC"
-            ] = args.cut_frac
-        if args.ratio:
-            config["LEARNING_RATE_SCHEDULER"]["SLANTED_TRIANGULAR"][
-                "RATIO"
-            ] = args.ratio
-
-    # if args.surgical_freeze:
-    #     if "SURGICAL" not in config:
-    #         config["SURGICAL"] = {}
-    #     config["SURGICAL"]["ENABLED"] = True
-    #     if args.surgical_blocks:
-    #         config["SURGICAL"]["BLOCKS_TO_UNFREEZE"] = args.surgical_blocks[0].split(
-    #             " "
-    #         )
-    #     if args.surgical_pretrained_path:
-    #         config["SURGICAL"]["PRETRAINED_PATH"] = args.surgical_pretrained_path
     return config
 
 
